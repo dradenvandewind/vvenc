@@ -586,7 +586,7 @@ int parse( int argc, char* argv[], vvenc_config* c, std::ostream& rcOstr )
   IStreamToInt8                     toNumParallelGOPs             ( &c->m_numParallelGOPs );
 
   IStreamToInt8                     toVpsId                       ( &c->m_vpsId );
-  IStreamToBool                     toForceVpsId                  ( &c->m_forceVpsOutput );
+  IStreamToInt8                     toForceVpsId                  ( &c->m_forceVpsOutput );
 
   po::Options opts;
   if( m_easyMode )
