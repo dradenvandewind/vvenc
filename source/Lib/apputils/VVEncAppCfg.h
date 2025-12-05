@@ -656,7 +656,7 @@ int parse( int argc, char* argv[], vvenc_config* c, std::ostream& rcOstr )
     ("BitstreamFile,b",                                 m_bitstreamFileName,                                 "Bitstream output file name")
     ("ReconFile,o",                                     m_reconFileName,                                     "Reconstructed YUV output file name")
     ("OutputBitDepth",                                  c->m_outputBitDepth[ 0 ],                            "Bit-depth of output file")
-    ("VpsId,vpsid",                                     c->m_vpsId,                                          "Configure VpsId")
+    ("VpsId",                                           c->m_vpsId,                                          "Configure VpsId")
     ("ForceVpsOuput",                                   c->m_forceVpsOutput,                                  "Force Vps in Output Stream")
     ;
   }
