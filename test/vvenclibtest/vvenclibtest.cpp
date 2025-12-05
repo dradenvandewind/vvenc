@@ -829,6 +829,10 @@ int checkSDKStringApiDefault()
   settings.push_back(std::make_tuple( VVENC_OPT_HDR,              "off") );
   settings.push_back(std::make_tuple( VVENC_OPT_SEGMENT,          "off") );
 
+  settings.push_back(std::make_tuple( VVENC_OPT_VPSID,          "1") );
+  settings.push_back(std::make_tuple( VVENC_OPT_FORCEVPSOUTPUT,          "1") );
+
+
   for( auto & d : settings )
   {
     std::string key = std::get<0>(d);
