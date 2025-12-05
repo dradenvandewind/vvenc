@@ -706,6 +706,9 @@ VVENC_DECL void vvenc_config_default(vvenc_config *c )
 
   c->m_fga                                     = false;
 
+  c->m_vpsId = 1;
+  c->m_forceVpsOutput = 1;
+
   memset( c->m_reservedInt8, 0, sizeof(c->m_reservedInt8) );
   memset( c->m_reservedDouble, 0, sizeof(c->m_reservedDouble) );
 
