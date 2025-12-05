@@ -61,7 +61,7 @@ VVEncCfg::VVEncCfg()
   m_fg.m_fgcSEICompModelPresent[1] = false;
   m_fg.m_fgcSEICompModelPresent[2] = false;
   m_fg.m_vpsId = 0;
-  m_fg.m_forceVpsOutput = false;
+  m_fg.m_forceVpsOutput = 0;
 }
 
 VVEncCfg& VVEncCfg::operator= ( const vvenc_config& extern_cfg )

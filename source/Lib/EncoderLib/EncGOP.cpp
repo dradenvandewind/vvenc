@@ -2498,7 +2498,7 @@ int EncGOP::xWriteParameterSets( Picture& pic, AccessUnitList& accessUnit, HLSWr
 
   if ( m_bFirstWrite || ( m_pcEncCfg->m_rewriteParamSets && slice->isIRAP() ) )
   {
-    if (slice->sps->vpsId != 0 || m_pcEncCfg->m_forceVpsOutput)
+    if (slice->sps->vpsId != 0 || m_pcEncCfg->m_forceVpsOutput != 0)
     {
       actualTotalBits += xWriteVPS( accessUnit, pic.vps, hlsWriter );
     }
