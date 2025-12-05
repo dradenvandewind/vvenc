@@ -512,6 +512,7 @@ int parse( int argc, char* argv[], vvenc_config* c, std::ostream& rcOstr )
 
   vvencHDRMode hdrMode = c->m_HdrMode;
   vvencHDRMode sdrMode = c->m_HdrMode;
+  
 
   IStreamToEnum<vvencMsgLevel>      toMsgLevel                   ( &c->m_verbosity,   &MsgLevelToEnumMap );
   IStreamToFunc<vvencPresetMode>    toPreset                     ( setPresets, this, c, &PresetToEnumMap,vvencPresetMode::VVENC_MEDIUM);
@@ -584,6 +585,9 @@ int parse( int argc, char* argv[], vvenc_config* c, std::ostream& rcOstr )
   IStreamToEnum<int8_t>             toMtProfile                   ( &c->m_mtProfile,                   &MtAbrevToIntMap );
   IStreamToInt8                     toNumParallelGOPs             ( &c->m_numParallelGOPs );
 
+  IStreamToInt8                     toVpsId                       ( &c->m_vpsId );
+  IStreamToBool                     toForceVpsId                  ( &c->m_forceVpsOutput );
+
   po::Options opts;
   if( m_easyMode )
   {
@@ -652,6 +656,8 @@ int parse( int argc, char* argv[], vvenc_config* c, std::ostream& rcOstr )
     ("BitstreamFile,b",                                 m_bitstreamFileName,                                 "Bitstream output file name")
     ("ReconFile,o",                                     m_reconFileName,                                     "Reconstructed YUV output file name")
     ("OutputBitDepth",                                  c->m_outputBitDepth[ 0 ],                            "Bit-depth of output file")
+    ("VpsId",                                           c->m_vpsId,                                          "Configure VpsId")
+    ("ForceVpsOuput",                                   toForceVpsId,                                        "Force Vps in Output Stream")
     ;
   }
 

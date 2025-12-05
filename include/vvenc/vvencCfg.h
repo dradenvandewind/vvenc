@@ -436,7 +436,8 @@ typedef struct vvenc_config
 
   int                 m_QP;                                                              // QP value of key-picture (0-63, default: 32)
   int                 m_RCTargetBitrate;                                                 // target bitrate in bps (default: 0 (RC disabled))
-
+  int8_t              m_vpsId;                                                           // set VpsId
+  bool                m_forceVpsOutput;                                                  // Force Vps in output Stream
   vvencMsgLevel       m_verbosity;                                                       // encoder verbosity level
 
   // basic config params
@@ -887,6 +888,8 @@ VVENC_DECL bool vvenc_init_config_parameter( vvenc_config *cfg );
 #define VVENC_OPT_INTERNALBITDEPTH      "internalbitdepth"    // m_internalBitDepth
 #define VVENC_OPT_HDR                   "hdr"                 // m_HdrMode
 #define VVENC_OPT_SEGMENT               "segment"             // m_SegmentMode
+#define VVENC_OPT_VPSID                 "vpsid"               // m_vpsId
+#define VVENC_OPT_FORCEVPSOUTPUT        "forcevpsoutput"      // m_forceVpsOutput
 
 /* vvenc_set_param (optional)
   This method sets one parameter by name.

@@ -814,7 +814,7 @@ void EncGOP::xInitVPS(VPS &vps) const
   // set the VPS profile information.
   vps.maxLayers                   = 1;
   vps.maxSubLayers                = 1;
-  vps.vpsId                       = 0;
+  vps.vpsId                       = m_pcEncCfg->m_vpsId;
   vps.allLayersSameNumSubLayers   = true;
   vps.allIndependentLayers        = true;
   vps.eachLayerIsAnOls            = true;
@@ -940,6 +940,7 @@ void EncGOP::xInitSPS(SPS &sps) const
   profileTierLevel->profileIdc    = m_pcEncCfg->m_profile;
   profileTierLevel->subProfileIdc.clear();
   profileTierLevel->subProfileIdc.push_back( m_pcEncCfg->m_subProfile );
+  sps.vpsId = m_pcEncCfg->m_vpsId;
 
   if( m_pcEncCfg->m_maxPicWidth != 0 && m_pcEncCfg->m_maxPicHeight != 0 )
   {
@@ -2497,7 +2498,7 @@ int EncGOP::xWriteParameterSets( Picture& pic, AccessUnitList& accessUnit, HLSWr
 
   if ( m_bFirstWrite || ( m_pcEncCfg->m_rewriteParamSets && slice->isIRAP() ) )
   {
-    if (slice->sps->vpsId != 0)
+    if (slice->sps->vpsId != 0 || m_pcEncCfg->m_forceVpsOutput)
     {
       actualTotalBits += xWriteVPS( accessUnit, pic.vps, hlsWriter );
     }

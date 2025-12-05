@@ -798,6 +798,11 @@ VVENC_DECL bool vvenc_init_config_parameter( vvenc_config *c )
 
   vvenc_confirmParameter( c,  (c->m_numIntraModesFullRD < -1 || c->m_numIntraModesFullRD == 0 || c->m_numIntraModesFullRD > 3), "NumIntraModesFullRD must be -1 or between 1 and 3");
 
+  vvenc_confirmParameter( c, c->m_vpsId, "Configure VpsId" );
+  vvenc_confirmParameter( c, c->m_bufferingPeriodSEIEnabled, "Force Vps in Output Stream" );
+
+
+
 #if ! ENABLE_TRACING
   vvenc_confirmParameter( c, c->m_traceFile[0] != '\0', "trace file option '--tracefile' set, but encoder lib not compiled with tracing support, use make ... enable-tracing=1 or set ENABLE_TRACING" );
   vvenc_confirmParameter( c, c->m_traceRule[0] != '\0', "trace rule option '--tracerule' set, but encoder lib not compiled with tracing support, use make ... enable-tracing=1 or set ENABLE_TRACING" );

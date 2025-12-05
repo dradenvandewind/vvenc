@@ -276,6 +276,60 @@ inline std::ostream& operator << ( std::ostream& os, const IStreamToInt8& toInt8
 }
 
 // ====================================================================================================================
+// string <-> bool
+// ====================================================================================================================
+
+class IStreamToBool
+{
+  public:
+    IStreamToBool( bool* d )
+      : dstVal( d )
+    {
+    }
+
+    ~IStreamToBool()
+    {
+    }
+
+    friend std::ostream& operator << ( std::ostream& os, const IStreamToBool& toBool );
+
+    friend std::istream& operator >> ( std::istream& in, IStreamToBool& toBool );
+
+  private:
+    bool* dstVal;
+};
+
+inline std::istream& operator >> ( std::istream& in, IStreamToBool& toBool )
+{
+  std::string str;
+  in >> str;
+
+  // Convert to lowercase for case-insensitive comparison
+  std::transform(str.begin(), str.end(), str.begin(), ::tolower);
+
+  if (str == "true" || str == "1" || str == "yes" || str == "on")
+  {
+    *toBool.dstVal = true;
+  }
+  else if (str == "false" || str == "0" || str == "no" || str == "off")
+  {
+    *toBool.dstVal = false;
+  }
+  else
+  {
+    in.setstate( std::ios::failbit );
+  }
+
+  return in;
+}
+
+inline std::ostream& operator << ( std::ostream& os, const IStreamToBool& toBool )
+{
+  os << (*toBool.dstVal ? "true" : "false");
+  return os;
+}
+
+// ====================================================================================================================
 // string <-> function
 // ====================================================================================================================
 
