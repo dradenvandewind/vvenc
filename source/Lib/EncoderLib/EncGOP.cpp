@@ -785,10 +785,10 @@ void EncGOP::getParameterSets( AccessUnitList& accessUnit )
   const PPS& pps = *( m_ppsMap.getFirstPS() );
   const SPS& sps = *( m_spsMap.getPS( pps.spsId ) );
 
-  if (sps.vpsId != 0)
-  {
+  //if (sps.vpsId != 0 || m_pcEncCfg->m_forceVpsOutput > 0 || m_pcEncCfg->vpsId > 0)
+  //{
     xWriteVPS( accessUnit, &m_VPS, m_HLSWriter );
-  }
+  //}
   xWriteDCI( accessUnit, &m_DCI, m_HLSWriter );
   xWriteSPS( accessUnit, &sps, m_HLSWriter );
   xWritePPS( accessUnit, &pps, &sps, m_HLSWriter );
@@ -941,6 +941,7 @@ void EncGOP::xInitSPS(SPS &sps) const
   profileTierLevel->subProfileIdc.clear();
   profileTierLevel->subProfileIdc.push_back( m_pcEncCfg->m_subProfile );
   sps.vpsId = m_pcEncCfg->m_vpsId;
+  
 
   if( m_pcEncCfg->m_maxPicWidth != 0 && m_pcEncCfg->m_maxPicHeight != 0 )
   {
@@ -2498,10 +2499,10 @@ int EncGOP::xWriteParameterSets( Picture& pic, AccessUnitList& accessUnit, HLSWr
 
   if ( m_bFirstWrite || ( m_pcEncCfg->m_rewriteParamSets && slice->isIRAP() ) )
   {
-    if (slice->sps->vpsId != 0 || m_pcEncCfg->m_forceVpsOutput != 0)
-    {
+    //if (slice->sps->vpsId != 0 || m_pcEncCfg->m_forceVpsOutput != 0)
+    //{
       actualTotalBits += xWriteVPS( accessUnit, pic.vps, hlsWriter );
-    }
+    //}
     actualTotalBits += xWriteDCI( accessUnit, pic.dci, hlsWriter );
     actualTotalBits += xWriteSPS( accessUnit, &sps, hlsWriter );
     actualTotalBits += xWritePPS( accessUnit, &pps, &sps, hlsWriter );
