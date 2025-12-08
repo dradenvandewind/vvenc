@@ -585,8 +585,8 @@ int parse( int argc, char* argv[], vvenc_config* c, std::ostream& rcOstr )
   IStreamToEnum<int8_t>             toMtProfile                   ( &c->m_mtProfile,                   &MtAbrevToIntMap );
   IStreamToInt8                     toNumParallelGOPs             ( &c->m_numParallelGOPs );
 
-  IStreamToArr<int>                 toVpsId                       ( &c->m_vpsId[1], VVENC_MAX_VPS_ID          );
-  IStreamToArr<int>                 toForceVpsId                  ( &c->m_forceVpsOutput[1], VVENC_MAX_FORCE_VPSID          );
+  IStreamToArr<int>                 toVpsId                       (reinterpret_cast<int*>(&c->m_vpsId[1]), VVENC_MAX_VPS_ID          );
+  IStreamToArr<int>                 toForceVpsId                  (reinterpret_cast<int*>(&c->m_forceVpsOutput[1]), VVENC_MAX_FORCE_VPSID          );
 
   po::Options opts;
   if( m_easyMode )
@@ -656,8 +656,8 @@ int parse( int argc, char* argv[], vvenc_config* c, std::ostream& rcOstr )
     ("BitstreamFile,b",                                 m_bitstreamFileName,                                 "Bitstream output file name")
     ("ReconFile,o",                                     m_reconFileName,                                     "Reconstructed YUV output file name")
     ("OutputBitDepth",                                  c->m_outputBitDepth[ 0 ],                            "Bit-depth of output file")
-    ("VpsId",                                           c->m_vpsId,                                          "Configure VpsId")
-    ("ForceVpsOuput",                                   c->m_forceVpsOutput,                                  "Force Vps in Output Stream")
+    ("VpsId",                                           c->m_vpsId[1],                                          "Configure VpsId")
+    ("ForceVpsOuput",                                   c->m_forceVpsOutput[1],                                  "Force Vps in Output Stream")
     ;
   }
 

@@ -68,8 +68,10 @@ typedef struct vvencFG
   uint8_t   m_fgcSEIIntensityIntervalLowerBound[VVENC_MAX_NUM_COMP][VVENC_MAX_NUM_INTENSITIES];
   uint8_t   m_fgcSEIIntensityIntervalUpperBound[VVENC_MAX_NUM_COMP][VVENC_MAX_NUM_INTENSITIES];
   uint32_t  m_fgcSEICompModelValue[VVENC_MAX_NUM_COMP][VVENC_MAX_NUM_INTENSITIES][VVENC_MAX_NUM_MODEL_VALUES];
-  int8_t m_vpsId;
-  int8_t m_forceVpsOutput;
+  int8_t m_vpsId[VVENC_MAX_VPS_ID];
+  //std::array<int, VVENC_MAX_VPS_ID> m_vpsId;
+  //std::array<int, VVENC_MAX_FORCE_VPSID> m_forceVpsOutput;
+  int8_t m_forceVpsOutput[VVENC_MAX_FORCE_VPSID];
 
 }vvencFG;
 
