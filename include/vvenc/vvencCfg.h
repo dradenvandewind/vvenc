@@ -793,7 +793,8 @@ typedef struct vvenc_config
   bool                m_configDone;                                                      // state variable, Private context used for internal data ( do not change )
   bool                m_confirmFailed;                                                   // state variable, Private context used for internal data ( do not change )
   vvencLoggingCallback m_msgFnc;                                                         // logger callback function (internal info/errors will use this function to return log messages)
-  void                *m_msgCtx;                                                         // caller context ( if not needed null )
+  void                *m_msgCtx;
+                                                          // caller context ( if not needed null )
 
 }vvenc_config;
 

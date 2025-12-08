@@ -785,7 +785,7 @@ void EncGOP::getParameterSets( AccessUnitList& accessUnit )
   const PPS& pps = *( m_ppsMap.getFirstPS() );
   const SPS& sps = *( m_spsMap.getPS( pps.spsId ) );
 
-  if (sps.vpsId != 0 || m_pcEncCfg->m_forceVpsOutput > 0 || m_pcEncCfg->vpsId > 0)
+  if (sps.vpsId != 0 || m_pcEncCfg->m_forceVpsOutput > 0 || m_pcEncCfg->m_vpsId > -1)
   {
     xWriteVPS( accessUnit, &m_VPS, m_HLSWriter );
   } else {
@@ -2501,7 +2501,7 @@ int EncGOP::xWriteParameterSets( Picture& pic, AccessUnitList& accessUnit, HLSWr
 
   if ( m_bFirstWrite || ( m_pcEncCfg->m_rewriteParamSets && slice->isIRAP() ) )
   {
-    if (slice->sps->vpsId != 0 || m_pcEncCfg->m_forceVpsOutput != 0)
+    if (slice->sps->vpsId != 0 || m_pcEncCfg->m_forceVpsOutput != -1 || m_pcEncCfg->m_vpsId > -1)
     {
       actualTotalBits += xWriteVPS( accessUnit, pic.vps, hlsWriter );
     }
