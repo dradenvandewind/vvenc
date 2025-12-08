@@ -801,8 +801,8 @@ VVENC_DECL bool vvenc_init_config_parameter( vvenc_config *c )
 
   vvenc_confirmParameter( c,  (c->m_numIntraModesFullRD < -1 || c->m_numIntraModesFullRD == 0 || c->m_numIntraModesFullRD > 3), "NumIntraModesFullRD must be -1 or between 1 and 3");
 
-  //vvenc_confirmParameter( c, c->m_vpsId, "Configure VpsId" );
-  //vvenc_confirmParameter( c, c->m_forceVpsOutput, "Force Vps in Output Stream" );
+  vvenc_confirmParameter( c, (c->m_vpsId < 0 || c->m_vpsId > 18 ), "Configure VpsId" );
+  vvenc_confirmParameter( c, (c->m_forceVpsOutput < 0 || c->m_forceVpsOutput > 1 ) , "Force Vps in Output Stream" );
 
 
 
