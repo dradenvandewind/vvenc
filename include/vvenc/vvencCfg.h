@@ -437,7 +437,8 @@ typedef struct vvenc_config
   int                 m_QP;                                                              // QP value of key-picture (0-63, default: 32)
   int                 m_RCTargetBitrate;                                                 // target bitrate in bps (default: 0 (RC disabled))
   int8_t              m_vpsId;                                                           // set VpsId
-  int8_t               m_forceVpsOutput;                                                  // Force Vps in output Stream
+  int8_t              m_forceVpsOutput;  
+                                                  // Force Vps in output Stream
   vvencMsgLevel       m_verbosity;                                                       // encoder verbosity level
 
   // basic config params
