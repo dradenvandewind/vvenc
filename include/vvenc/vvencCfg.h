@@ -90,7 +90,8 @@ typedef void (*vvencLoggingCallback)(void*, int, const char*, va_list);
 #define VVENC_AUTO_QP                        -1      // indicates to use default QP, or ignore if RC is used
 #define VVENC_RC_OFF                          0      // indicates rate control is disabled
 #define VVENC_TICKS_PER_SEC_DEF               27000000 // default ticks per second
-
+#define VVENC_MAX_VPS_ID                      15
+#define VVENC_MAX_FORCE_VPSID                 1
 // ====================================================================================================================
 
 
@@ -436,8 +437,8 @@ typedef struct vvenc_config
 
   int                 m_QP;                                                              // QP value of key-picture (0-63, default: 32)
   int                 m_RCTargetBitrate;                                                 // target bitrate in bps (default: 0 (RC disabled))
-  int8_t              m_vpsId;                                                           // set VpsId
-  int8_t              m_forceVpsOutput;  
+  int8_t              m_vpsId[VVENC_MAX_VPS_ID];                                                           // set VpsId
+  int8_t              m_forceVpsOutput[VVENC_MAX_FORCE_VPSID];  
                                                   // Force Vps in output Stream
   vvencMsgLevel       m_verbosity;                                                       // encoder verbosity level
 
