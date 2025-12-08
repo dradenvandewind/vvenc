@@ -804,12 +804,12 @@ VVENC_DECL bool vvenc_init_config_parameter( vvenc_config *c )
 
   vvenc_confirmParameter( c, c->m_HdrMode < VVENC_HDR_OFF || c->m_HdrMode > VVENC_SDR_BT470BG,  "Sdr/Hdr Mode must be in the range 0 - 8" );
 
-  vvenc_confirmParameter( c, c->m_verbosity < VVENC_SILENT || c->m_verbosity > VVENC_DETAILS, "verbosity is out of range[0..6]" );
+  //vvenc_confirmParameter( c, c->m_verbosity < VVENC_SILENT || c->m_verbosity > VVENC_DETAILS, "verbosity is out of range[0..6]" );
 
   vvenc_confirmParameter( c,  (c->m_numIntraModesFullRD < -1 || c->m_numIntraModesFullRD == 0 || c->m_numIntraModesFullRD > 3), "NumIntraModesFullRD must be -1 or between 1 and 3");
 
   vvenc_confirmParameter( c, c->m_vpsId[0] < 0 || c->m_vpsId[14] > 15 ,                                           "Configure VpsId" );
-  vvenc_confirmParameter( c, c->m_forceVpsOutput[0] < 0 || c->m_forceVpsOutput[1] > 1 ,                         "Force Vps in Output Stream" );
+  //vvenc_confirmParameter( c, c->m_forceVpsOutput[0] < 0 || c->m_forceVpsOutput[1] > 1 ,                         "Force Vps in Output Stream" );
 
 
 
