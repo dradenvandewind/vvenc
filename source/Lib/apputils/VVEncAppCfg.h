@@ -585,9 +585,7 @@ int parse( int argc, char* argv[], vvenc_config* c, std::ostream& rcOstr )
   IStreamToEnum<int8_t>             toMtProfile                   ( &c->m_mtProfile,                   &MtAbrevToIntMap );
   IStreamToInt8                     toNumParallelGOPs             ( &c->m_numParallelGOPs );
 
-  IStreamToArr<int>                 toVpsId                       (reinterpret_cast<int*>(&c->m_vpsId[1]), VVENC_MAX_VPS_ID          );
-  IStreamToArr<int>                 toForceVpsId                  (reinterpret_cast<int*>(&c->m_forceVpsOutput[1]), VVENC_MAX_FORCE_VPSID          );
-
+  
   po::Options opts;
   if( m_easyMode )
   {
