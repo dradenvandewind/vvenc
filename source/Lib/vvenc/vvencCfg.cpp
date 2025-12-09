@@ -705,7 +705,7 @@ VVENC_DECL void vvenc_config_default(vvenc_config *c )
   c->m_GOPQPA                                  = -1;
 
   c->m_fga                                     = false;
-
+/*/
   memset(&c->m_vpsId    ,0, sizeof(c->m_vpsId)); 
   memset(&c->m_forceVpsOutput    ,0, sizeof(c->m_forceVpsOutput)); 
   for(int i = 0; i < VVENC_MAX_VPS_ID; i++ ){
@@ -713,7 +713,9 @@ VVENC_DECL void vvenc_config_default(vvenc_config *c )
   }
   for(int i = 0; i < VVENC_MAX_FORCE_VPSID; i++ ){
     c->m_forceVpsOutput[i] = i;
-  }
+  }*/
+  c->m_vpsId = 0;
+  c->m_forceVpsOutput = false;
 
 
   memset( c->m_reservedInt8, 0, sizeof(c->m_reservedInt8) );

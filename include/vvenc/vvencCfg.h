@@ -437,9 +437,13 @@ typedef struct vvenc_config
 
   int                 m_QP;                                                              // QP value of key-picture (0-63, default: 32)
   int                 m_RCTargetBitrate;                                                 // target bitrate in bps (default: 0 (RC disabled))
-  int8_t              m_vpsId[VVENC_MAX_VPS_ID];                                                           // set VpsId
-  int8_t              m_forceVpsOutput[VVENC_MAX_FORCE_VPSID];  
-                                                  // Force Vps in output Stream
+  //int8_t              m_vpsId[VVENC_MAX_VPS_ID];                                                           // set VpsId
+  //int8_t              m_forceVpsOutput[VVENC_MAX_FORCE_VPSID];  
+  // Dans la section appropriée de vvenc_config
+  int                 m_vpsId;                                                       // VPS ID (default: 0)
+  bool                m_forceVpsOutput;                                              // Force VPS output even when not needed (default: false)
+
+
   vvencMsgLevel       m_verbosity;                                                       // encoder verbosity level
 
   // basic config params
@@ -774,7 +778,7 @@ typedef struct vvenc_config
   int8_t              m_sliceTypeAdapt;                                                  // enable slice type adaptation (STA)
   bool                m_treatAsSubPic;
 
-#define VVENC_SET_MAXRATE_FACTOR(f) (-((int)(f*16+0.5)))
+  #define VVENC_SET_MAXRATE_FACTOR(f) (-((int)(f*16+0.5)))
   int                 m_RCMaxBitrate;                                                    // maximum bitrate in bps (default: 0 (RC disabled or least constrained VBR),
                                                                                          // if negative, the absolute value is interpreted as a 4-bit fixed point multiplier of the target bitrate).
                                                                                          // -24, i.e. -1.1000 binary, means the maxrate would be set to be the 1.5x of the target bitrate.
