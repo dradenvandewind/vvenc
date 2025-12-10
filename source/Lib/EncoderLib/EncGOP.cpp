@@ -2497,6 +2497,12 @@ int EncGOP::xWriteParameterSets( Picture& pic, AccessUnitList& accessUnit, HLSWr
   const SPS& sps      = *(slice->sps);
   const PPS& pps      = *(slice->pps);
   int actualTotalBits = 0;
+  std::cout << "=== VPS Configuration ===" << std::endl;
+  std::cout << "sps.vpsId = " << sps.vpsId << std::endl;
+  std::cout << "m_pcEncCfg->m_vpsId = " << m_pcEncCfg->m_vpsId << std::endl;
+  std::cout << "m_pcEncCfg->m_forceVpsOutput = " << m_pcEncCfg->m_forceVpsOutput << std::endl;
+  std::cout << "Will write VPS: " << ((sps.vpsId != 0 || m_pcEncCfg->m_forceVpsOutput) ? "YES" : "NO") << std::endl;
+
 
   if ( m_bFirstWrite || ( m_pcEncCfg->m_rewriteParamSets && slice->isIRAP() ) )
   {
